@@ -7,3 +7,17 @@ https://www.amazon.com/Z690-UD-AX-DDR4-Motherboard/dp/B09JZGTYXJ/ref=sr_1_1?crid
 cpu:
 https://www.amazon.com/Intel-i7-12700K-Desktop-Processor-Unlocked/dp/B09FXNVDBJ/ref=sr_1_1?keywords=core+i7+12700k&qid=1690237939&refresh=1&sprefix=core+i7+12%2Caps%2C247&sr=8-1
 
+gpu:
+https://www.amazon.com/Gigabyte-Graphics-WINDFORCE-GV-N407TGAMING-OC-12GD/dp/B0BRR2R8HH/ref=sr_1_1?crid=27PLIOJMFWHVG&keywords=4070+ti&qid=1690323388&sprefix=4070+ti%2Caps%2C233&sr=8-1
+
+cooler:
+https://www.amazon.com/Thermalright-Prism360-Efficient-Controlled-3×TL-E12/dp/B0BWJS56BF/ref=sr_1_18?crid=ZHDCJ1KCM2CT&keywords=water%2Bcooler%2Bpc&qid=1690323454&sprefix=water%2Bcooler%2Bp%2Caps%2C237&sr=8-18&th=1
+
+ram:
+https://www.amazon.com/Patriot-Viper-Steel-3200MHz-Module/dp/B08N68G6XF/ref=sr_1_21?crid=21705OHOB5PE7&keywords=ddr4%2B16gb&qid=1690323530&sprefix=ddr4%2B16%2Caps%2C219&sr=8-21&th=1
+
+m2:
+https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2/ref=sr_1_3?crid=2809P0LYDNL0Z&keywords=m2+1tb&qid=1690323584&sprefix=m2+1tb%2Caps%2C217&sr=8-3
+
+power unit:
+https://www.amazon.com/Segotep-850W-Fully-Modular-Gaming-Certified/dp/B08F1NFSG4/ref=sr_1_10?crid=18L1PLBSPZCZF&keywords=power%2Bunit%2Bpc%2B850w&qid=1690323694&sprefix=power%2Bunit%2Bpc%2B850w%2Caps%2C216&sr=8-10&th=1

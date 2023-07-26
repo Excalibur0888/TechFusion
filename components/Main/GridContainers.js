@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, Animated } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, Animated, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
 import { addToFavorites, removeFromFavorites } from '../../redux/actions';
-import { LazyLoadImage } from 'react-lazyload';
 import { getImageDownloadURL } from './firebaseStorageHelper';
 
 const Block = ({ blockCaption, imageSource }) => {
@@ -62,10 +61,10 @@ const Block = ({ blockCaption, imageSource }) => {
 						color={selected ? 'red' : 'black'}
 					/>
 				</TouchableOpacity>
-				<Image source={imageSource} style={styles.image} />
+				<Image source={imageSource} style={styles.image} lazy/>
 
 				<View style={styles.captionContainer}>
-					<Text style={styles.caption}>{blockCaption}</Text>
+					<Text style={styles.caption} numberOfLines={2}>{blockCaption}</Text>
 				</View>
 			</Animated.View>
 		</TouchableWithoutFeedback>
@@ -74,10 +73,13 @@ const Block = ({ blockCaption, imageSource }) => {
 
 const GridContainers = () => {
   const [imageURLs, setImageURLs] = useState([]);
-
   useEffect(() => {
     const fetchImageURLs = async () => {
-      const images = ['i7 12th, RTX 4070, 32GB, 2TB, 750W.png', 'pc2.jpg', 'pc3.jpg', 'pc4.jpg', 'pc5.jpg', 'pc6.png', 'pc7.jpg', 'pc8.jpg'];
+      const images = ['i7 12700KF, RTX 4070ti, 32GB, 2TB.png', 
+			'i5 12600K, RTX 3060ti, 16GB, 1,5TB.png', 
+			'i3 12100F, GTX 1660S, 16GB, 1,5TB.png', 
+			'i3 10100F, GTX 1650, 8GB, 1TB.png',
+			 'pc5.jpg', 'pc6.png', 'pc7.jpg', 'pc8.jpg'];
 
       const urls = await Promise.all(
         images.map(async (imageName) => {
@@ -94,55 +96,76 @@ const GridContainers = () => {
 
   return (
     <View>
+			<Text style={styles.inteltitle}>Intel™</Text>
+			<View style={styles.intel}>
       <View style={styles.row}>
         {imageURLs.slice(0, 2).map(({ imageName, url }) => (
-					<LazyLoadImage offset = {100}>
           <Block
             key={imageName}
             blockCaption={`${imageName.split('.')[0]}`}
             imageSource={{ uri: url }}
           />
-					</LazyLoadImage>
         ))}
       </View>
-
       <View style={styles.row}>
         {imageURLs.slice(2, 4).map(({ imageName, url }) => (
-					<LazyLoadImage offset = {100}>
           <Block
             key={imageName}
             blockCaption={`${imageName.split('.')[0]}`}
             imageSource={{ uri: url }}
           />
-					</LazyLoadImage>
         ))}
       </View>
+			</View>
+			<Text style={styles.amdtitle}>AMD™</Text>
+			<View style={styles.amd}>
       <View style={styles.row}>
         {imageURLs.slice(4, 6).map(({ imageName, url }) => (
-					<LazyLoadImage offset = {100}>
           <Block
             key={imageName}
             blockCaption={`${imageName.split('.')[0]}`}
             imageSource={{ uri: url }}
           />
-					</LazyLoadImage>
         ))}
       </View>
       <View style={styles.row}>
         {imageURLs.slice(6, 8).map(({ imageName, url }) => (
-					<LazyLoadImage offset = {100}>
           <Block 
             key={imageName}
             blockCaption={`${imageName.split('.')[0]}`}
             imageSource={{ uri: url }}
           />
-					</LazyLoadImage>
         ))}
       </View>
+			</View>
     </View>
   );
 };
 
+const getContainerStyles = (borderColor) => {
+	return {
+		borderWidth: 3,
+		borderColor,
+		borderTopRightRadius: 10,
+		borderBottomRightRadius: 10,
+		borderBottomLeftRadius: 10,
+		padding: 2,
+		marginBottom: 20,
+	};
+};
+
+const getTitleStyles = (color, backgroundColor) => {
+	return {
+		color: '#fff',
+		width: '20%',
+		borderTopLeftRadius: 10,
+		borderTopRightRadius: 10,
+		textAlign: 'center',
+		fontFamily: 'mt-text',
+		fontSize: 20,
+		backgroundColor,
+	};
+};
 
 const styles = StyleSheet.create({
 	row: {
@@ -151,6 +174,11 @@ const styles = StyleSheet.create({
 		marginBottom: 15,
 		width: '100%',
 	},
+	intel: getContainerStyles('#2292dc', '#2292dc'),
+  inteltitle: getTitleStyles('#fff', '#2292dc'),
+
+  amd: getContainerStyles('#9e1111', '#9e1111'),
+  amdtitle: getTitleStyles('#fff', '#9e1111'),
 	captionContainer: {
 		position: 'absolute',
 		bottom: 0,
@@ -169,14 +197,13 @@ const styles = StyleSheet.create({
 	},
 	image: {
 		width: '100%',
-		height: 200,
+		height: 190,
 		borderRadius: 10,
 		marginBottom: 55,
 	},
 	caption: {
 		fontSize: 16,
 		width: '100%',
-		backgroundColor: '#111112',
 		paddingTop: 5,
 		color: '#fff',
 		fontWeight: 'bold',

@@ -1,20 +1,60 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import favoritesReducer from './redux/reducers';
+import { SafeAreaView } from 'react-native';
+import { StatusBar } from 'react-native';
+import * as SplashScreen from 'expo-splash-screen';
+import * as Font from 'expo-font';
+import NavigateTab from './Navigation/NavigateTab';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+SplashScreen.preventAutoHideAsync();
+const store = configureStore({
+	reducer: {
+		favorites: favoritesReducer,
+	},
+});
+function App() {
+	const fonts = () =>
+		Font.loadAsync({
+			'mt-bold': require('./assets/fonts/Montserrat-Bold.ttf'),
+			'mt-light': require('./assets/fonts/Montserrat-Light.ttf'),
+			'mt-text': require('./assets/fonts/Raleway-Medium.ttf'),
+			'mt-name': require('./assets/fonts/CarterOne-Regular.ttf'),
+		});
+	const [appIsReady, setAppIsReady] = useState(false);
+
+	useEffect(() => {
+		async function prepare() {
+			try {
+				await fonts();
+			} catch (e) {
+				console.warn(e);
+			} finally {
+				setAppIsReady(true);
+			}
+		}
+		prepare();
+	}, []);
+
+	const onLayoutRootView = useCallback(async () => {
+		if (appIsReady) {
+			await SplashScreen.hideAsync();
+		}
+	}, [appIsReady]);
+
+	if (!appIsReady) {
+		return null;
+	}
+
+	return (
+		<Provider store={store}>
+		<SafeAreaView style={{flex:1}} edges={['top', 'left']} onLayout={onLayoutRootView}>
+			<NavigateTab />
+			<StatusBar backgroundColor="#111112" barStyle="light-content" />
+		</SafeAreaView>
+		</Provider>
+	);
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

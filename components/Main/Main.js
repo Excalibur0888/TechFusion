@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Animated, ScrollView, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { gStyle } from '../../styles/style';
+import { useNavigation } from "@react-navigation/native";
 import GridContainers from './GridContainers';
 import HeaderMenu from './HeaderMenu';
 
@@ -10,8 +11,16 @@ const Main = () => {
 	const [menuIcon, setMenuIcon] = useState('menu-outline');
 	const [isScreenDimmed, setIsScreenDimmed] = useState(false);
 	const menuAnimation = useState(new Animated.Value(0))[0];
-
-	const toggleMenu = () => {
+	const navigation = useNavigation();
+	
+	const handlePlusButtonPress = () => {
+			navigation.navigate("PlusStackScreen");
+			if (isMenuOpen) {
+      toggleMenu();
+    }
+	};
+	
+	const toggleMenu = () => { 
 		if (isMenuOpen) {
 			Animated.timing(menuAnimation, {
 				toValue: 0,
@@ -43,13 +52,15 @@ const Main = () => {
 				</TouchableOpacity>
 				<View style={styles.titleContainer}>
 				<Image
-					source={require('../../assets/iconwhite.png')}
-					style={styles.image}
+					source={require('../../assets/icon.png')}
+					style={styles.titleimage}
 					resizeMode="contain"
 				/>
 				<Text style={styles.title}>PC Master</Text>
 			</View>
-				<Ionicons name="search-outline" size={45} color="white" style={{ marginTop: 5 }} />
+			<TouchableOpacity>
+				<Ionicons name="search-outline" size={45} color="white" />
+			</TouchableOpacity>
 				{isMenuOpen && (
 					<TouchableOpacity onPress={toggleMenu} style={styles.closeButton}>
 						<Ionicons name="close-outline" size={50} color="white" />
@@ -58,7 +69,7 @@ const Main = () => {
 				<HeaderMenu menuAnimation={menuAnimation} />
 			</View>
 			<ScrollView contentContainerStyle={styles.contentContainer}>
-				<TouchableOpacity style={styles.main_button}>
+				<TouchableOpacity onPress={handlePlusButtonPress} style={styles.main_button}>
 					<View style={{ marginRight: 10 }}>
 						<Ionicons name="desktop-outline" size={25} color="white" />
 					</View>
@@ -67,6 +78,9 @@ const Main = () => {
 				<Text style={gStyle.title}>Попробуйте наши сборки</Text>
 				<GridContainers />
 			</ScrollView>
+			<TouchableOpacity onPress={handlePlusButtonPress} style={styles.plusButton}>
+					<Ionicons name="add-outline" size={60} color="white" />
+			</TouchableOpacity>
 		</View>
 	);
 };
@@ -85,10 +99,19 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 	},
-	image: {
+	titleimage: {
 		width: 40,
-		height: 40,
+		height: 50,
 		marginRight: 10,
+	},
+	plusButton: {
+		position: 'absolute',
+		backgroundColor: '#363636',
+		borderRadius: 100,
+		borderWidth: 1,
+		bottom: 70,
+		right: 10,
+		zIndex: 2,
 	},
 	title: {
 		fontFamily: 'mt-name',

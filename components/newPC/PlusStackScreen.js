@@ -1,18 +1,20 @@
-import { createStackNavigator } from "@react-navigation/stack";
-import { TouchableOpacity, Text } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import React from "react";
 import { gStyle } from "../../styles/style";
-import { View } from "react-native";
-const Stack = createStackNavigator();
+import { View, TouchableOpacity } from "react-native";
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from "@react-navigation/native"; // Import the useNavigation hook
 
 const PlusStackScreen = () => {
-	const navigation = useNavigation();
+  const navigation = useNavigation(); // Get the navigation object
+
+  const handleGoBack = () => {
+    navigation.goBack(); // Go back to the previous screen
+  };
+
   return (
     <View style={gStyle.main}>
-      <TouchableOpacity
-        onPress={() => navigation.goBack()}
-      >
-        <Text>Закрыть</Text>
+      <TouchableOpacity onPress={handleGoBack}>
+				<Ionicons name='chevron-back-outline' size={50} color="white" />
       </TouchableOpacity>
     </View>
   );
