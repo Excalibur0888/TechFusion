@@ -4,8 +4,8 @@ import { addToFavorites, removeFromFavorites } from './actions';
 const favoritesReducer = createReducer([], (builder) => {
 	builder
 		.addCase(addToFavorites, (state, action) => {
-			const { caption, image } = action.payload;
-			const newItem = { caption, image };
+			const { caption, image, price } = action.payload;
+			const newItem = { caption, image, price };
 			const isItemExists = state.some((item) => item.caption === caption);
 			if (!isItemExists) {
 				state.push(newItem);

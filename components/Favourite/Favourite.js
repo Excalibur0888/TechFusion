@@ -13,6 +13,7 @@ const Favourite = () => {
           <View key={index} style={styles.itemContainer}>
             <Image source={item.image} style={styles.image} />
             <Text style={styles.caption}>{item.caption}</Text>
+						<Text style={styles.caption}>{item.price}</Text>
           </View>
         ))}
       </ScrollView>
@@ -34,6 +35,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
+		color: 'white'
   },
 });
 

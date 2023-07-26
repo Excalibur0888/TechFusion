@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { registerRootComponent } from 'expo';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import favoritesReducer from './redux/reducers';
@@ -26,13 +27,8 @@ function App() {
 
 	useEffect(() => {
 		async function prepare() {
-			try {
 				await fonts();
-			} catch (e) {
-				console.warn(e);
-			} finally {
 				setAppIsReady(true);
-			}
 		}
 		prepare();
 	}, []);
@@ -57,4 +53,5 @@ function App() {
 	);
 }
 
+registerRootComponent(App);
 export default App;

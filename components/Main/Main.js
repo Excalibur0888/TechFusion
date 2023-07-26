@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
 		borderRadius: 10,
 		padding: 10,
 		justifyContent: 'center',
+		fontFamily: 'mt-text',
 		flexDirection: 'row',
 		alignItems: 'center',
 		marginBottom: 15,

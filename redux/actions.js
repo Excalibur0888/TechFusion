@@ -5,6 +5,7 @@ export const addToFavorites = createAction('ADD_TO_FAVORITES', (item) => {
     payload: {
       caption: item.caption,
       image: item.image,
+			price: item.price,
     },
   };
 });

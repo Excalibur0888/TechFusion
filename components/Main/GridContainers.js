@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { addToFavorites, removeFromFavorites } from '../../redux/actions';
 import { getImageDownloadURL } from './firebaseStorageHelper';
 
-const Block = ({ blockCaption, imageSource }) => {
+const Block = ({ blockCaption, imageSource, price }) => {
 	const [selected, setSelected] = useState(false);
 	const dispatch = useDispatch();
 
@@ -14,7 +14,7 @@ const Block = ({ blockCaption, imageSource }) => {
 		setSelected(updatedSelected);
 
 		if (updatedSelected) {
-			dispatch(addToFavorites({ caption: blockCaption, image: imageSource }));
+			dispatch(addToFavorites({ caption: blockCaption, image: imageSource, price: price }));
 		} else {
 			dispatch(removeFromFavorites({ caption: blockCaption }));
 		}
@@ -66,6 +66,7 @@ const Block = ({ blockCaption, imageSource }) => {
 				<View style={styles.captionContainer}>
 					<Text style={styles.caption} numberOfLines={2}>{blockCaption}</Text>
 				</View>
+				<Text style={styles.price}>{price}</Text>
 			</Animated.View>
 		</TouchableWithoutFeedback>
 	);
@@ -96,48 +97,64 @@ const GridContainers = () => {
 
   return (
     <View>
-			<Text style={styles.inteltitle}>Intel™</Text>
-			<View style={styles.intel}>
-      <View style={styles.row}>
-        {imageURLs.slice(0, 2).map(({ imageName, url }) => (
+      <Text style={styles.inteltitle}>Intel™</Text>
+      <View style={styles.intel}>
+        <View style={styles.row}>
           <Block
-            key={imageName}
-            blockCaption={`${imageName.split('.')[0]}`}
-            imageSource={{ uri: url }}
+            key={imageURLs[0]?.imageName}
+            blockCaption={`${imageURLs[0]?.imageName?.split('.')[0]}`}
+            imageSource={{ uri: imageURLs[0]?.url }}
+						price = '$1700'
           />
-        ))}
-      </View>
-      <View style={styles.row}>
-        {imageURLs.slice(2, 4).map(({ imageName, url }) => (
           <Block
-            key={imageName}
-            blockCaption={`${imageName.split('.')[0]}`}
-            imageSource={{ uri: url }}
+            key={imageURLs[1]?.imageName}
+            blockCaption={`${imageURLs[1]?.imageName?.split('.')[0]}`}
+            imageSource={{ uri: imageURLs[1]?.url }}
+						price = '$1000'
           />
-        ))}
-      </View>
-			</View>
-			<Text style={styles.amdtitle}>AMD™</Text>
-			<View style={styles.amd}>
-      <View style={styles.row}>
-        {imageURLs.slice(4, 6).map(({ imageName, url }) => (
+        </View>
+				<View style={styles.row}>
           <Block
-            key={imageName}
-            blockCaption={`${imageName.split('.')[0]}`}
-            imageSource={{ uri: url }}
+            key={imageURLs[2]?.imageName}
+            blockCaption={`${imageURLs[2]?.imageName?.split('.')[0]}`}
+            imageSource={{ uri: imageURLs[2]?.url }}
+						price = '$600'
           />
-        ))}
-      </View>
-      <View style={styles.row}>
-        {imageURLs.slice(6, 8).map(({ imageName, url }) => (
-          <Block 
-            key={imageName}
-            blockCaption={`${imageName.split('.')[0]}`}
-            imageSource={{ uri: url }}
+          <Block
+            key={imageURLs[3]?.imageName}
+            blockCaption={`${imageURLs[3]?.imageName?.split('.')[0]}`}
+            imageSource={{ uri: imageURLs[3]?.url }}
+						price = '$500'
           />
-        ))}
+        </View>
       </View>
-			</View>
+      <Text style={styles.amdtitle}>AMD™</Text>
+      <View style={styles.amd}>
+			<View style={styles.row}>
+				<Block
+					key={imageURLs[4]?.imageName}
+					blockCaption={`${imageURLs[4]?.imageName?.split('.')[0]}`}
+					imageSource={{ uri: imageURLs[4]?.url }}
+				/>
+				<Block
+					key={imageURLs[5]?.imageName}
+					blockCaption={`${imageURLs[5]?.imageName?.split('.')[0]}`}
+					imageSource={{ uri: imageURLs[5]?.url }}
+				/>
+        </View>
+				<View style={styles.row}>
+				<Block
+					key={imageURLs[6]?.imageName}
+					blockCaption={`${imageURLs[6]?.imageName?.split('.')[0]}`}
+					imageSource={{ uri: imageURLs[6]?.url }}
+				/>
+				<Block
+					key={imageURLs[7]?.imageName}
+					blockCaption={`${imageURLs[7]?.imageName?.split('.')[0]}`}
+					imageSource={{ uri: imageURLs[7]?.url }}
+				/>
+        </View>
+      </View>
     </View>
   );
 };
@@ -149,7 +166,6 @@ const getContainerStyles = (borderColor) => {
 		borderTopRightRadius: 10,
 		borderBottomRightRadius: 10,
 		borderBottomLeftRadius: 10,
-		padding: 2,
 		marginBottom: 20,
 	};
 };
@@ -194,12 +210,13 @@ const styles = StyleSheet.create({
 		backgroundColor: '#dadada',
 		borderRadius: 10,
 		alignItems: 'center',
+		marginBottom: 15
 	},
 	image: {
 		width: '100%',
 		height: 190,
 		borderRadius: 10,
-		marginBottom: 55,
+		marginBottom: 25,
 	},
 	caption: {
 		fontSize: 16,
@@ -208,6 +225,12 @@ const styles = StyleSheet.create({
 		color: '#fff',
 		fontWeight: 'bold',
 		textAlign: 'center',
+	},
+	price: {
+		color: '#ea00ff',
+		fontSize: 24,
+		fontWeight: 700,
+		top: 30,
 	},
 	favoriteButton: {
 		position: 'absolute',
