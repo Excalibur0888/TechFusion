@@ -5,6 +5,7 @@ import { gStyle } from '../../styles/style';
 import { useNavigation } from "@react-navigation/native";
 import GridContainers from './GridContainers';
 import HeaderMenu from './HeaderMenu';
+import Categories from './Categories';
 
 const Main = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,7 +57,7 @@ const Main = () => {
 					style={styles.titleimage}
 					resizeMode="contain"
 				/>
-				<Text style={styles.title}>PC Master</Text>
+				<Text style={styles.title}>TechFusion</Text>
 			</View>
 			<TouchableOpacity>
 				<Ionicons name="search-outline" size={45} color="white" />
@@ -75,6 +76,8 @@ const Main = () => {
 					</View>
 					<Text style={gStyle.text}>Собрать свой ПК</Text>
 				</TouchableOpacity>
+				<Text style={gStyle.title}>Комплектующие для ПК</Text>
+				<Categories />
 				<Text style={gStyle.title}>Попробуйте наши сборки</Text>
 				<GridContainers />
 			</ScrollView>
@@ -132,7 +135,7 @@ const styles = StyleSheet.create({
 		borderRadius: 10,
 		padding: 10,
 		justifyContent: 'center',
-		fontFamily: 'mt-text',
+		fontFamily: 'mt-light',
 		flexDirection: 'row',
 		alignItems: 'center',
 		marginBottom: 15,

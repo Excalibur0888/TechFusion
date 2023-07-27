@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, Animated, Image } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, ScrollView, Animated, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
 import { addToFavorites, removeFromFavorites } from '../../redux/actions';
@@ -24,7 +24,7 @@ const Block = ({ blockCaption, imageSource, price }) => {
 
 	const handlePressIn = () => {
 		Animated.spring(scaleValue, {
-			toValue: 0.93,
+			toValue: 0.95,
 			useNativeDriver: false,
 		}).start();
 	};
@@ -62,7 +62,6 @@ const Block = ({ blockCaption, imageSource, price }) => {
 					/>
 				</TouchableOpacity>
 				<Image source={imageSource} style={styles.image} lazy/>
-
 				<View style={styles.captionContainer}>
 					<Text style={styles.caption} numberOfLines={2}>{blockCaption}</Text>
 				</View>
@@ -98,6 +97,7 @@ const GridContainers = () => {
   return (
     <View>
       <Text style={styles.inteltitle}>Intel™</Text>
+			<ScrollView horizontal >
       <View style={styles.intel}>
         <View style={styles.row}>
           <Block
@@ -112,8 +112,6 @@ const GridContainers = () => {
             imageSource={{ uri: imageURLs[1]?.url }}
 						price = '$1000'
           />
-        </View>
-				<View style={styles.row}>
           <Block
             key={imageURLs[2]?.imageName}
             blockCaption={`${imageURLs[2]?.imageName?.split('.')[0]}`}
@@ -128,7 +126,9 @@ const GridContainers = () => {
           />
         </View>
       </View>
+			</ScrollView>
       <Text style={styles.amdtitle}>AMD™</Text>
+			<ScrollView horizontal>
       <View style={styles.amd}>
 			<View style={styles.row}>
 				<Block
@@ -141,8 +141,6 @@ const GridContainers = () => {
 					blockCaption={`${imageURLs[5]?.imageName?.split('.')[0]}`}
 					imageSource={{ uri: imageURLs[5]?.url }}
 				/>
-        </View>
-				<View style={styles.row}>
 				<Block
 					key={imageURLs[6]?.imageName}
 					blockCaption={`${imageURLs[6]?.imageName?.split('.')[0]}`}
@@ -155,19 +153,9 @@ const GridContainers = () => {
 				/>
         </View>
       </View>
+			</ScrollView>
     </View>
   );
-};
-
-const getContainerStyles = (borderColor) => {
-	return {
-		borderWidth: 3,
-		borderColor,
-		borderTopRightRadius: 10,
-		borderBottomRightRadius: 10,
-		borderBottomLeftRadius: 10,
-		marginBottom: 20,
-	};
 };
 
 const getTitleStyles = (color, backgroundColor) => {
@@ -190,31 +178,32 @@ const styles = StyleSheet.create({
 		marginBottom: 15,
 		width: '100%',
 	},
-	intel: getContainerStyles('#2292dc', '#2292dc'),
   inteltitle: getTitleStyles('#fff', '#2292dc'),
-
-  amd: getContainerStyles('#9e1111', '#9e1111'),
   amdtitle: getTitleStyles('#fff', '#9e1111'),
+	intel: {
+		marginBottom: 10
+	},
 	captionContainer: {
 		position: 'absolute',
 		bottom: 0,
 		left: 0,
 		right: 0,
 		backgroundColor: '#111112',
-		paddingVertical: 5,
+
 	},
 	block: {
 		position: 'relative',
-		width: '48%',
+		width: 150,
 		padding: 5,
 		backgroundColor: '#dadada',
 		borderRadius: 10,
 		alignItems: 'center',
-		marginBottom: 15
+		marginBottom: 15,
+		marginRight: 20,
 	},
 	image: {
 		width: '100%',
-		height: 190,
+		height: 150,
 		borderRadius: 10,
 		marginBottom: 25,
 	},
@@ -228,7 +217,7 @@ const styles = StyleSheet.create({
 	},
 	price: {
 		color: '#ea00ff',
-		fontSize: 24,
+		fontSize: 20,
 		fontWeight: 700,
 		top: 30,
 	},

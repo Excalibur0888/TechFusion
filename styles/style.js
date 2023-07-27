@@ -7,7 +7,7 @@ export const gStyle = StyleSheet.create({
 		zIndex: 0,
 	},
 	title: {
-		fontSize: 22,
+		fontSize: 20,
 		textAlign: "left",
 		color: '#e8e8e8',
 		fontFamily: 'mt-bold',
@@ -18,5 +18,14 @@ export const gStyle = StyleSheet.create({
 		fontSize: 20,
 		textAlign: 'center',
 		color: '#e8e8e8'
+	},
+	caption: {
+			position: "absolute",
+			top: 10,
+			left: 10,
+			color: "white",
+			fontSize: 18,
+			fontFamily: "mt-caption",
+			fontWeight: "bold",
 	}
 });

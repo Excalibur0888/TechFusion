@@ -19,16 +19,20 @@ function App() {
 	const fonts = () =>
 		Font.loadAsync({
 			'mt-bold': require('./assets/fonts/Montserrat-Bold.ttf'),
-			'mt-light': require('./assets/fonts/Montserrat-Light.ttf'),
 			'mt-text': require('./assets/fonts/Raleway-Medium.ttf'),
 			'mt-name': require('./assets/fonts/CarterOne-Regular.ttf'),
+			'mt-caption': require('./assets/fonts/REM-Light.ttf')
 		});
 	const [appIsReady, setAppIsReady] = useState(false);
 
 	useEffect(() => {
 		async function prepare() {
+			try {
 				await fonts();
+			}
+			finally {
 				setAppIsReady(true);
+			}
 		}
 		prepare();
 	}, []);
