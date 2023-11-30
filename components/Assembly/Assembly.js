@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { gStyle } from '../../styles/style'
+import { gStyle } from '../../styles/style';
+import Header from '../Header/Header';
 
-const Profile = () => {
+const Assembly = () => {
 	return (
 		<View style={gStyle.main}>
-			<Text style={gStyle.title}>Good afternoon man</Text>
+			<Header/>
 		</View>
 	);
 };
@@ -14,4 +15,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default Profile;
+export default Assembly;

@@ -1,6 +1,6 @@
 import React from "react";
 import Main from "../components/Main/Main";
-import Profile from "../components/Profile/Profile";
+import Assembly from "../components/Assembly/Assembly";
 import Catalog from "../components/Catalog/Catalog";
 import Favourite from "../components/Favourite/Favourite";
 import PlusStackScreen from '../components/newPC/PlusStackScreen'
@@ -25,7 +25,7 @@ const MainTab = () => {
         }}
       >
         <Tab.Screen name="Main" component={Main} />
-        <Tab.Screen name="Profile" component={Profile} />
+        <Tab.Screen name="Assembly" component={Assembly} />
         <Tab.Screen name="Catalog" component={Catalog} />
         <Tab.Screen name="Favourite" component={Favourite} />
       </Tab.Navigator>

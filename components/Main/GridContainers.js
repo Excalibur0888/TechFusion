@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
 import { addToFavorites, removeFromFavorites } from '../../redux/actions';
 import { getImageDownloadURL } from './firebaseStorageHelper';
+import { handlePressIn, handlePressOut} from './Animation/Animations'
 
 const Block = ({ blockCaption, imageSource, price }) => {
 	const [selected, setSelected] = useState(false);
@@ -22,24 +23,8 @@ const Block = ({ blockCaption, imageSource, price }) => {
 
 	const scaleValue = useRef(new Animated.Value(1)).current;
 
-	const handlePressIn = () => {
-		Animated.spring(scaleValue, {
-			toValue: 0.95,
-			useNativeDriver: false,
-		}).start();
-	};
-
-	const handlePressOut = () => {
-		Animated.spring(scaleValue, {
-			toValue: 1,
-			friction: 3,
-			tension: 40,
-			useNativeDriver: false,
-		}).start();
-	};
-
 	return (
-		<TouchableWithoutFeedback onPressIn={handlePressIn} onPressOut={handlePressOut}>
+		<TouchableWithoutFeedback onPressIn={() => handlePressIn(scaleValue)} onPressOut={() => handlePressOut(scaleValue)}>
 			<Animated.View
 				style={[
 					styles.block,
@@ -79,7 +64,10 @@ const GridContainers = () => {
 			'i5 12600K, RTX 3060ti, 16GB, 1,5TB.png', 
 			'i3 12100F, GTX 1660S, 16GB, 1,5TB.png', 
 			'i3 10100F, GTX 1650, 8GB, 1TB.png',
-			 'pc5.jpg', 'pc6.png', 'pc7.jpg', 'pc8.jpg'];
+			'R9 5900X, RTX 4070ti, 32GB, 2TB.png',
+			'R7 5700X, RTX 3070, 16GB, 2TB.png',
+			'R5 5500, RTX 2060, 16GB, 2TB.png', 
+			'R5 3600, GTX 1650, 8GB, 1TB.png'];
 
       const urls = await Promise.all(
         images.map(async (imageName) => {
@@ -104,25 +92,25 @@ const GridContainers = () => {
             key={imageURLs[0]?.imageName}
             blockCaption={`${imageURLs[0]?.imageName?.split('.')[0]}`}
             imageSource={{ uri: imageURLs[0]?.url }}
-						price = '$1700'
+						price = '$1745'
           />
           <Block
             key={imageURLs[1]?.imageName}
             blockCaption={`${imageURLs[1]?.imageName?.split('.')[0]}`}
             imageSource={{ uri: imageURLs[1]?.url }}
-						price = '$1000'
+						price = '$941'
           />
           <Block
             key={imageURLs[2]?.imageName}
             blockCaption={`${imageURLs[2]?.imageName?.split('.')[0]}`}
             imageSource={{ uri: imageURLs[2]?.url }}
-						price = '$600'
+						price = '$604'
           />
           <Block
             key={imageURLs[3]?.imageName}
             blockCaption={`${imageURLs[3]?.imageName?.split('.')[0]}`}
             imageSource={{ uri: imageURLs[3]?.url }}
-						price = '$500'
+						price = '$511'
           />
         </View>
       </View>
@@ -135,21 +123,25 @@ const GridContainers = () => {
 					key={imageURLs[4]?.imageName}
 					blockCaption={`${imageURLs[4]?.imageName?.split('.')[0]}`}
 					imageSource={{ uri: imageURLs[4]?.url }}
+					price = '$1825'
 				/>
 				<Block
 					key={imageURLs[5]?.imageName}
 					blockCaption={`${imageURLs[5]?.imageName?.split('.')[0]}`}
 					imageSource={{ uri: imageURLs[5]?.url }}
+					price = '$1089'
 				/>
 				<Block
 					key={imageURLs[6]?.imageName}
 					blockCaption={`${imageURLs[6]?.imageName?.split('.')[0]}`}
 					imageSource={{ uri: imageURLs[6]?.url }}
+					price = '$630'
 				/>
 				<Block
 					key={imageURLs[7]?.imageName}
 					blockCaption={`${imageURLs[7]?.imageName?.split('.')[0]}`}
 					imageSource={{ uri: imageURLs[7]?.url }}
+					price = '$462'
 				/>
         </View>
       </View>
@@ -183,6 +175,9 @@ const styles = StyleSheet.create({
 	intel: {
 		marginBottom: 10
 	},
+	amd: {
+		marginBottom: 10
+	},
 	captionContainer: {
 		position: 'absolute',
 		bottom: 0,
@@ -205,7 +200,7 @@ const styles = StyleSheet.create({
 		width: '100%',
 		height: 150,
 		borderRadius: 10,
-		marginBottom: 25,
+		marginBottom: 20,
 	},
 	caption: {
 		fontSize: 16,

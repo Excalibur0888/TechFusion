@@ -2,7 +2,7 @@ pc case:
 https://www.amazon.com/MUSETEX-Computer-Translucent-Tempered-Management/dp/B07GNGQF8Q/ref=sr_1_86?crid=1HS0L4KZYW0DT&keywords=pc+case+mid+tower&nav_sdd=aps&qid=1690237586&refinements=p_n_feature_nine_browse-bin%3A2057506011&rnid=2057420011&s=pc&sprefix=pc+case+&sr=1-86
 
 motherboard:
-https://www.amazon.com/Z690-UD-AX-DDR4-Motherboard/dp/B09JZGTYXJ/ref=sr_1_1?crid=170DBURXJXZHL&keywords=motherboard%2Bgigabyte%2Blga%2B1700&qid=1690236837&refinements=p_36%3A1253506011%2Cp_n_feature_seven_browse-bin%3A10656895011&rnid=5657491011&s=pc&sprefix=motherboard%2Bgigabyte%2Blga%2B1700%2Caps%2C208&sr=1-1&th=1
+https://www.amazon.com/MSI-DDR4-ProSeries-Motherboard-Socket/dp/B09GLD6LYW/ref=sr_1_5?crid=36DFX8OY5HRFZ&keywords=motherboard%2Bgigabyte%2Blga%2B1700%2B4000mhz&qid=1690930411&refinements=p_n_feature_seven_browse-bin%3A10656895011%2Cp_n_feature_nine_browse-bin%3A2057506011&rnid=2057420011&s=pc&sprefix=motherboard%2Bgigabyte%2Blga%2B1700%2B4000mh%2Caps%2C188&sr=1-5
 
 cpu:
 https://www.amazon.com/Intel-i7-12700K-Desktop-Processor-Unlocked/dp/B09FXNVDBJ/ref=sr_1_1?keywords=core+i7+12700k&qid=1690237939&refresh=1&sprefix=core+i7+12%2Caps%2C247&sr=8-1

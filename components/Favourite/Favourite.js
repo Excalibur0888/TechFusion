@@ -2,12 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import { useSelector } from 'react-redux';
 import { gStyle } from '../../styles/style';
+import Header from '../Header/Header';
 
 const Favourite = () => {
   const favorites = useSelector((state) => state.favorites);
 
   return (
     <View style={gStyle.main}>
+			<Header/>
       <ScrollView>
         {favorites.map((item, index) => (
           <View key={index} style={styles.itemContainer}>

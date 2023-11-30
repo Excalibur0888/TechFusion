@@ -1,5 +1,5 @@
 {
-  "name": "pc_master",
+  "name": "Tech_Fusion",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -23,7 +23,8 @@
     "react-dom": "^18.2.0",
     "react-lazy-load-image-component": "^1.6.0",
     "react-native": "0.71.8",
-    "react-redux": "^8.1.1"
+    "react-redux": "^8.1.1",
+    "react-native-web": "~0.18.11"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

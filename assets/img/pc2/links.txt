@@ -5,7 +5,7 @@ cpu:
 https://www.amazon.com/Intel-i5-12600K-Desktop-Processor-Unlocked/dp/B09FX4D72T/ref=sr_1_5?crid=33DRPX8NNCQTF&keywords=core+i5+12400&qid=1690307395&sprefix=core+i5+12600k%2Caps%2C193&sr=8-5
 
 motherboard:
-https://www.amazon.com/B760-DS3H-AC-DDR4-Motherboard/dp/B0BSNYN4XQ/ref=sr_1_3?crid=NWEY1JN12ZGE&keywords=atx%2Bmotherboard%2Blga%2B1700%2Bddr4&qid=1690307624&refinements=p_n_feature_nine_browse-bin%3A2057506011&rnid=386442011&s=pc&sprefix=atx%2Bmotherboard%2Blga%2Caps%2C205&sr=1-3&th=1
+https://www.amazon.com/MSI-B550-Gaming-GEN3-Motherboard/dp/B0BHCL4YVS/ref=sr_1_10?crid=33MJE3IHVRM5P&keywords=atx%2Bmotherboard%2Blga%2B1700%2Bddr4%2B3200mhz&qid=1690931027&refinements=p_n_feature_nine_browse-bin%3A2057506011&rnid=2057420011&s=pc&sprefix=atx%2Bmotherboard%2Blga%2B1700%2Bddr4%2B3200mh%2Caps%2C217&sr=1-10
 
 gpu:
 https://www.amazon.com/MSI-GeForce-RTX-3060-8GD6X/dp/B0BXFQZZW1/ref=sr_1_4?crid=I1DP7CVTQMD5&keywords=rtx+3060+ti&qid=1690307894&rnid=2528832011&s=electronics&sprefix=rtx+3060+ti%2Caps%2C201&sr=1-4

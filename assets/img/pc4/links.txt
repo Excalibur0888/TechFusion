@@ -13,5 +13,5 @@ https://www.amazon.com/Intel-BX8070110100F-i3-10100F-3-6GHz-LGA1200/dp/B08LKJPR5
 motherboard:
 https://www.amazon.com/Asrock-H570-Phantom-Gaming-Intel/dp/B08X12SQ6N/ref=sr_1_1?keywords=atx+lga+1200+motherboard&qid=1690324682&refinements=p_n_feature_nine_browse-bin%3A2057506011&rnid=2057420011&s=pc&sprefix=atx+lga+12%2Caps%2C225&sr=1-1
 
-ram:
+m2:
 https://www.amazon.com/SAMSUNG-MZ-V8V1T0B-AM-980-SSD/dp/B08V83JZH4/ref=sr_1_3?crid=19DAVMSS1Y6HJ&keywords=ssd%2Bm2%2B1tb&qid=1690328779&sprefix=ssd%2Bm2%2Caps%2C204&sr=8-3&th=1

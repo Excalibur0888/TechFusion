@@ -1,14 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { StyleSheet, Text, View, ScrollView, Animated, TouchableWithoutFeedback, ImageBackground } from "react-native";
 import { gStyle } from "../../styles/style";
+import { getImageDownloadURL } from "./firebaseStorageHelper";
 
-const imageMap = {
-  gaming: require("../../assets/bg/gaming.jpg"),
-  office: require("../../assets/bg/office.jpg"),
-	budget: require("../../assets/bg/budget.jpg")
-};
-
-const Block = ({ imageUrl, text }) => {
+const Block = ({ imageSource, text }) => {
   const scaleValue = useRef(new Animated.Value(1)).current;
 
   const handlePressIn = () => {
@@ -39,7 +34,7 @@ const Block = ({ imageUrl, text }) => {
       >
         <View style={styles.imageWrapper}>
           <ImageBackground
-            source={imageMap[imageUrl]}
+            source={imageSource}
             style={styles.image}
             resizeMode="cover"
           >
@@ -52,12 +47,30 @@ const Block = ({ imageUrl, text }) => {
 };
 
 const Categories = () => {
+	const [imageURLs, setImageURLs] = useState([]);
+  useEffect(() => {
+    const fetchImageURLs = async () => {
+      const images = ['gaming.jpg', 'office.jpg', 'budget.jpg'];
+
+      const urls = await Promise.all(
+        images.map(async (imageName) => {
+          const url = await getImageDownloadURL(imageName);
+          return { imageName, url };
+        })
+      );
+
+      setImageURLs(urls);
+    };
+
+    fetchImageURLs();
+  }, []);
+
 	return (
 		<View style={styles.row}>
 			<ScrollView horizontal showsHorizontalScrollIndicator={false}>
-				<Block imageUrl="gaming" text='Игровые'/>
-				<Block imageUrl="office" text='Офисные'/>
-				<Block imageUrl="budget" text='Бюджетные'/>
+				<Block imageSource={{ uri: imageURLs[0]?.url }} text='Игровые'/>
+				<Block imageSource={{ uri: imageURLs[1]?.url }} text='Офисные'/>
+				<Block imageSource={{ uri: imageURLs[2]?.url }} text='Бюджетные'/>
 			</ScrollView>
 		</View>
 	);
